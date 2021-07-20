@@ -1,0 +1,25 @@
+
+<main class="form-signin bg-light shadow p-3">
+  <form [formGroup]="form" (submit)="submit()">
+    <h5 class="h5 mb-3 fw-normal font-weight-bold">Login &  Welcome to We<span class="text-success">care</span></h5>
+    <hr>
+    <div class="form-group">
+      <input formControlName="username" [ngClass]="{'is-invalid':form.get('username').touched && form.get('username').invalid}" type="number" class="form-control is-invalid" placeholder="Mobile Number">
+      <div *ngIf="form.get('username').touched && form.get('username').invalid" class="invalid-feedback">
+        <div *ngIf="form.get('username').errors.required" class="text-danger">Mobile Number is required</div>
+        <div *ngIf="form.get('username').errors.pattern" class="text-danger">Mobile Number is Invalid</div>
+      </div>
+      
+    </div>
+    <div class="form-group">
+      <input formControlName="password" [ngClass]="{'is-invalid':form.get('password').touched && form.get('password').invalid}" type="password" class="form-control" placeholder="Password" required>
+      <div class="invalid-feedback" *ngIf="form.get('password').touched && form.get('password').invalid">
+        <div class="text-danger" *ngIf="form.get('password').errors.required">Password is required.</div>
+        <div class="text-danger" *ngIf="form.get('password').errors.minlength">Password must be at least 6 characters.</div>
+      </div>
+    </div>
+ 
+
+    <button class="w-100 btn btn-lg btn-primary" [disabled]="!form.valid" type="submit">Sign in</button>
+  </form>
+</main>

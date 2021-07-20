@@ -1,0 +1,71 @@
+
+<main class="container">
+ 
+    <form [formGroup]="form" (submit)="submit()" class="bg-light p-3 shadow mb-4">
+      <h5 class="h5 mb-3 fw-normal">Please fill the form to request</h5>
+        <hr>
+ 
+     
+
+        <div class="row ">
+            <div class="input-group col-12 col-md-6 mb-3"> 
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Service</span>
+                </div>
+                <select (change)="onChangeService($event.target)" class="custom-select">
+                    <option selected disabled>Select Service you need</option>
+                    <option *ngFor="let service of services; let i = index" value="{{i}}">{{service.service}}</option>
+                </select>
+            </div>
+            <div class="input-group col-12 col-md-6 mb-3"> 
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Category</span>
+                </div>
+                <select (change)="onChangeCategory($event.target)" class="custom-select">
+                    <option selected disabled>Select Category</option>
+                    <option *ngFor="let category of categories" value="{{category.id}}">{{category.category}}</option>
+                    <option value="">Others</option>
+                </select>
+            </div>
+        </div>
+        <div class="row ">
+        <div class="input-group col-12 col-md-6 mb-3"> 
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">State</span>
+                </div>
+                <select (change)="onChangeState($event.target)" class="custom-select">
+                    <option selected disabled>Select your State or UT</option>
+                    <option *ngFor="let state of states; let k = index" value="{{k}}">{{state.name}}</option>
+                </select>
+            </div>
+            <div class="input-group col-12 col-md-6 mb-3"> 
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">District</span>
+                </div>
+                <select (change)="onChangeDistrict($event.target)" class="custom-select">
+                    <option selected value="">Select your district</option>
+                    <option *ngFor="let district of districts; let k = index" value="{{district}}">{{district}}</option>
+                </select>
+            </div>
+        </div>
+      
+  
+
+
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Details</span>
+        </div>
+        <textarea formControlName="about" class="form-control" aria-label="With textarea"></textarea>
+      </div>
+      <small class="help-text">**Please add some details about your requirements.</small>
+
+      <br><br>
+      <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="!form.valid">Send Request</button>
+
+ 
+  
+    </form>
+
+ 
+  </main>

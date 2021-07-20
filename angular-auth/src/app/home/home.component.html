@@ -1,0 +1,73 @@
+<div id="stripes">
+</div>
+
+{{message}}
+
+  <div class="main-home pt-5">
+    <h1 class="w-100 text-center mt-5"><b>Discover what's <strong class="text-danger text-nowrap">Around You</strong></b></h1>
+    <br>
+
+
+  </div>
+
+  <div class="container">
+    <div class="row cards ">
+      <div class="col-12 col-md-6 mb-3">
+        <div class="card card2 card-large card-row-layout shadow">
+          <a routerLink="/services" class="">
+            <div class="card-body">
+              <p class="card-title h5 font-weight-bold text-center w-100 p-0 m-0 mb-3">Find Covid-19 Service</p>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </a>
+        </div>
+      </div>
+ 
+      <div class="col-12 col-md-6 mb-3">
+        <div class="card card2 card-large card-row-layout shadow">
+          <a routerLink="/requests" class="">
+            <div class="card-body">
+              <p class="card-title h5 font-weight-bold text-center w-100 p-0 m-0 mb-3">Request For A Help</p>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 mb-3">
+        <div class="card card2 card-large card-row-layout shadow">
+          <a href="#" class="">
+            <div class="card-body">
+              <p class="card-title h5 font-weight-bold text-center w-100 p-0 m-0 mb-3">Add A Service Provider</p>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </a>
+        </div>
+      </div>
+ 
+
+
+    </div>
+  </div>
+
+  <div class="container bg-white border-top p-0 shadow mt-4 pb-3">
+    <div class="text-center pt-3">
+        <h3 class="font-weight-bold"> Available Services for Covid-19</h3>
+    </div>
+    <div class="Grid m-1"> 
+        <a *ngFor="let service of services" class="hover-red m-1 p-2 h-100 text-center shadow-sm bg-white" :href="`retail/${row.category_slug}`" style="margin: 2px;">
+          <img :src="`/img/color/retail/${row.category_slug}.png`" class="Grid-img">
+          <b>
+            <strong> {{service.service}}</strong>
+          </b>
+        </a> 
+    </div>
+  </div> 
+  
+  
+ 
+
+
+
+
+
+ 

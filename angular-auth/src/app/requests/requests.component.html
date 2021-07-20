@@ -1,0 +1,151 @@
+
+
+<div class="container bg-light shadow p-3">
+    <button routerLink="/request_for_help" class="w-100 btn btn-lg btn-success">Request for a help</button>
+ 
+
+    <hr>
+    <h5 class="h4 text-danger mb-3 fw-normal text-center font-weight-bold">All Requests</h5>
+
+
+
+ 
+
+    <div class="row d-flex justify-content-center">
+   
+ 
+        <div class="col-12 col-md-4">
+          <div class="form-group"> 
+            <select class="form-control" (change)="onChangeService($event.target)">
+              <option selected value="">Select Service</option>
+              <option *ngFor="let service of services; let i = index" value="{{i}}">{{service.service}}</option>
+            </select>  
+          </div>
+        </div>
+  
+        <div class="col-12 col-md-4" *ngIf="service">
+          <div class="form-group"> 
+              <select class="form-control" (change)="onChangeCategory($event.target)">
+                <option selected value="">Select Category</option>
+                <option *ngFor="let category of categories" value="{{category.id}}">{{category.category}}</option>
+              </select>  
+          </div>
+        </div>
+    
+        <div class="col-12 col-md-4">
+          <div class="form-group">
+              <select class="form-control" (change)="onChangeState($event.target)">
+                <option selected value="">Select State</option>
+                <option *ngFor="let state of states; let k = index" value="{{k}}">{{state.name}}</option>
+              </select>  
+          </div>
+        </div>
+        <div class="col-12 col-md-4" *ngIf="state">
+          <div class="form-group">
+              <select class="form-control" (change)="onChangeDistrict($event.target)">
+                <option selected value="">Select District</option>
+                <option *ngFor="let district of districts; let k = index" value="{{district}}">{{district}}</option>
+              </select>  
+          </div>
+        </div>     
+        
+        
+    
+    </div>    
+  
+  
+  
+  
+      <hr> 
+      <div class="row cards ">
+        <div class="col-12 col-md-6 mb-3" *ngFor="let request of requests"  >
+          <div class="card card-large card-row-layout shadow-sm">
+            <a routerLink="/Requests" class="">
+              <div class="card-body">
+                <p class="card-text h6 d-flex">
+                  <span class="w-25 font-weight-bold">
+                    Posted by : 
+                  </span>
+                  <span>
+                    {{request.posted_by_first_name}} 
+                    {{request.posted_by_last_name}}
+                  </span>
+                </p>
+                <p class="card-text h6 d-flex">
+                  <span class="w-25 font-weight-bold">
+                    Service : 
+                  </span>
+                  <span>
+                    {{request.this_service}}
+                  </span>
+                </p>
+                <p class="card-text h6 d-flex">
+                  <span class="w-25 font-weight-bold">
+                    Category : 
+                  </span>
+                  <span>
+                    {{request.this_category}}
+                  </span>
+                  <span *ngIf="!request.category">
+                    Not available
+                  </span>
+                </p>
+                <p class="card-text h6 d-flex">
+                  <span class="w-25 font-weight-bold">
+                    Address : 
+                  </span>
+                  <span *ngIf="request.city" class="pr-1">
+                    {{request.city}}, 
+                  </span> 
+                  {{request.district}}, {{request.state}} 
+                </p>
+                <p class="card-text h6 d-flex">
+                  <span class="w-25 font-weight-bold">
+                    Mobile No : 
+                  </span>
+                  <span>
+                    {{request.contact}}
+                  </span>
+                </p>
+                <p class="card-text h6 d-flex">
+                  <span class="w-25 font-weight-bold">
+                    Updated : 
+                  </span>
+                  <span>
+                    {{request.gap}}
+                  </span>
+                </p>
+                <p class="card-text h6 d-flex">
+                  <span class="w-25 font-weight-bold">
+                    Details : 
+                  </span>
+                  <span>
+                    {{request.about}}
+                  </span>
+                </p>
+                
+  
+              </div>
+              <!-- <div class="card-footer d-flex justify-content-between align-items-center" style="font-size: 14px;">
+                <div>
+                  <span>Maintained by : {{request.maintained_by_first_name}} {{request.maintained_by_last_name}}</span>
+                  <button (click)="upvoteDonner(request)" class="text-success"><i class="mr-3 fa fa-hand-o-up" style="font-size: 22px;cursor:pointer"></i>{{request.upvote}}</button>
+                  <button class="text-danger"><i class="mr-3 fa fa-hand-o-down" style="font-size: 22px;cursor:pointer"></i>{{request.upvote}}</button>
+                </div>
+                <div class="text-right">
+                  <span *ngIf="request.verified" class="text-success">Verified</span>
+                  <span *ngIf="!request.verified" class="text-danger">Not verified</span>
+                </div>
+              </div> -->
+          </a>
+          </div>
+        </div>
+  
+        
+  
+  
+  
+      </div> 
+  
+  </div>
+  

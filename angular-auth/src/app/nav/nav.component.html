@@ -1,0 +1,38 @@
+
+<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light shadow">
+  <a  class="navbar-brand"  routerLink="/">We Care</a>
+  <button #navbarToggler class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div (click)="collapseNav()" class="navbar-collapse collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">  
+    </ul>   
+
+    <ul class="navbar-nav">   
+ 
+      <li class="nav-item">
+        <a routerLink="/services" class="nav-link">Services</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/requests" class="nav-link">Requests</a>
+      </li>
+
+      <li class="nav-item">
+        <a routerLink="/contribute" class="nav-link">Contribute</a>
+      </li>
+
+      <li class="nav-item">
+        <a routerLink="/account" class="nav-link">Account</a>
+      </li>      
+      <li class="nav-item" *ngIf="!authenticated">
+        <a routerLink="/login" class="nav-link">Login</a>
+      </li>
+      <li class="nav-item" *ngIf="!authenticated">
+        <a routerLink="/register" class="nav-link">Register</a>
+      </li>
+      <li class="nav-item" *ngIf="authenticated">
+        <a routerLink="/login" class="nav-link" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>

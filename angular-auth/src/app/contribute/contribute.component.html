@@ -1,0 +1,90 @@
+
+<main class="container">
+    <form [formGroup]="form" (submit)="submit()" class="bg-light p-3 shadow">
+      <h5 class="h5 mb-3 fw-normal">Add a Service Provider</h5>
+        <hr>
+        
+<!-- 
+        <div class="form-group">
+            <input formControlName="first_name" [ngClass]="{'is-invalid':form.get('first_name').touched && form.get('first_name').invalid}" type="input" class="form-control" placeholder="First Name" required>
+            <div class="invalid-feedback">
+              <div class="text-danger">First name is required</div>
+            </div>
+        </div> -->
+
+          
+        <div class="row ">
+            <div class="input-group col-12 col-md-6 mb-3"> 
+                <input formControlName="provider" [ngClass]="{'is-invalid':form.get('provider').touched && form.get('provider').invalid}" type="input" class="form-control" placeholder="Service provider name" required>
+                <div class="invalid-feedback">
+                  <div class="text-danger">First name is required</div>
+                </div>
+            </div>
+
+            <div class="input-group col-12 col-md-6 mb-3"> 
+                <input formControlName="contact" [ngClass]="{'is-invalid':form.get('contact').touched && form.get('contact').invalid}" type="number" class="form-control is-invalid" placeholder="Service Provider Number">
+                <div *ngIf="form.get('contact').touched && form.get('contact').invalid" class="invalid-feedback">
+                  <div *ngIf="form.get('contact').errors.required" class="text-danger">Service Provider Number is required</div>
+                  <div *ngIf="form.get('contact').errors.pattern" class="text-danger">Service Provider Number is Invalid</div>
+                </div>
+                
+            </div>
+
+        </div>
+      
+
+        <div class="row ">
+            <div class="input-group col-12 col-md-6 mb-3"> 
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Service</span>
+                </div>
+                <select (change)="onChangeService($event.target)" class="custom-select">
+                    <option selected disabled>Select Service</option>
+                    <option *ngFor="let service of services; let i = index" value="{{i}}">{{service.service}}</option>
+                </select>
+            </div>
+            <div class="input-group col-12 col-md-6 mb-3"> 
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Category</span>
+                </div>
+                <select (change)="onChangeCategory($event.target)" class="custom-select">
+                    <option selected disabled>Select Category</option>
+                    <option *ngFor="let category of categories" value="{{category.id}}">{{category.category}}</option>
+                    <option value="">Others</option>
+                </select>
+            </div>
+        </div>
+        <div class="row ">
+        <div class="input-group col-12 col-md-6 mb-3"> 
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">State</span>
+                </div>
+                <select (change)="onChangeState($event.target)" class="custom-select">
+                    <option selected disabled>Select State or UT</option>
+                    <option *ngFor="let state of states; let k = index" value="{{k}}">{{state.name}}</option>
+                </select>
+            </div>
+            <div class="input-group col-12 col-md-6 mb-3"> 
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">District</span>
+                </div>
+                <select (change)="onChangeDistrict($event.target)" class="custom-select">
+                    <option selected value="">Select district</option>
+                    <option *ngFor="let district of districts; let k = index" value="{{district}}">{{district}}</option>
+                </select>
+            </div>
+        </div>
+      
+      
+
+
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Details</span>
+        </div>
+        <textarea formControlName="about" class="form-control" aria-label="With textarea"></textarea>
+      </div>
+      <br>
+      <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="!form.valid">Post</button>
+    </form>
+  </main>
